@@ -52,6 +52,17 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				sentiment: {
+					positive: 'hsl(var(--sentiment-positive))',
+					'positive-light': 'hsl(var(--sentiment-positive-light))',
+					'positive-bg': 'hsl(var(--sentiment-positive-bg))',
+					negative: 'hsl(var(--sentiment-negative))',
+					'negative-light': 'hsl(var(--sentiment-negative-light))',
+					'negative-bg': 'hsl(var(--sentiment-negative-bg))',
+					neutral: 'hsl(var(--sentiment-neutral))',
+					'neutral-light': 'hsl(var(--sentiment-neutral-light))',
+					'neutral-bg': 'hsl(var(--sentiment-neutral-bg))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -67,6 +78,18 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-sentiment': 'var(--gradient-sentiment)',
+				'gradient-card': 'var(--gradient-card)'
+			},
+			boxShadow: {
+				'sentiment': 'var(--shadow-sentiment)',
+				'card-custom': 'var(--shadow-card)'
+			},
+			transitionTimingFunction: {
+				'smooth': 'var(--transition-smooth)'
 			},
 			keyframes: {
 				'accordion-down': {
