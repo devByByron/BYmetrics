@@ -2,122 +2,206 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Futuristic GitHub-inspired Design System */
 
 @layer base {
   :root {
-    --background: 225 15% 5%;
-    --foreground: 225 9% 98%;
-
-    --card: 225 15% 8%;
-    --card-foreground: 225 9% 98%;
-
-    --popover: 225 15% 8%;
-    --popover-foreground: 225 9% 98%;
-
-    --primary: 264 83% 57%;
-    --primary-foreground: 225 9% 98%;
-
-    --secondary: 225 15% 12%;
-    --secondary-foreground: 225 9% 98%;
-
-    --muted: 225 15% 12%;
-    --muted-foreground: 225 9% 63%;
-
-    --accent: 264 83% 57%;
-    --accent-foreground: 225 9% 98%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 225 15% 18%;
-    --input: 225 15% 12%;
-    --ring: 264 83% 57%;
-
-    --radius: 0.75rem;
-
-    /* Sentiment Analysis Color System */
-    --sentiment-positive: 142 76% 36%;
-    --sentiment-positive-light: 142 69% 58%;
-    --sentiment-positive-bg: 142 76% 36% / 0.1;
+    /* Dark Mode - Primary Palette */
+    --background: 221 20% 4%;
+    --background-elevated: 221 18% 6%;
+    --background-glass: 221 20% 4% / 0.7;
     
-    --sentiment-negative: 0 84% 60%;
-    --sentiment-negative-light: 0 84% 70%;
-    --sentiment-negative-bg: 0 84% 60% / 0.1;
+    --foreground: 221 14% 98%;
+    --foreground-muted: 221 14% 85%;
     
-    --sentiment-neutral: 45 93% 47%;
-    --sentiment-neutral-light: 45 93% 65%;
-    --sentiment-neutral-bg: 45 93% 47% / 0.1;
-
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(264 83% 57%), hsl(295 100% 65%));
-    --gradient-sentiment: linear-gradient(135deg, hsl(var(--sentiment-positive)), hsl(var(--sentiment-neutral)), hsl(var(--sentiment-negative)));
-    --gradient-card: linear-gradient(135deg, hsl(225 15% 8% / 0.8), hsl(225 15% 12% / 0.9));
+    /* Card System */
+    --card: 221 18% 6%;
+    --card-elevated: 221 16% 8%;
+    --card-foreground: 221 14% 98%;
+    --card-glass: 221 18% 6% / 0.8;
     
-    /* Shadows */
-    --shadow-sentiment: 0 10px 30px -10px hsl(264 83% 57% / 0.3);
-    --shadow-card: 0 8px 25px -8px hsl(225 15% 3% / 0.4);
-
-    /* Animation */
+    /* Interactive Elements */
+    --popover: 221 18% 6%;
+    --popover-foreground: 221 14% 98%;
+    
+    /* Brand Colors - GitHub-inspired blues with futuristic touch */
+    --primary: 217 100% 68%;
+    --primary-bright: 210 100% 76%;
+    --primary-foreground: 221 20% 4%;
+    --primary-glass: 217 100% 68% / 0.1;
+    
+    --secondary: 221 16% 12%;
+    --secondary-elevated: 221 14% 16%;
+    --secondary-foreground: 221 14% 98%;
+    
+    /* Accent System */
+    --accent: 283 100% 72%;
+    --accent-bright: 295 100% 78%;
+    --accent-foreground: 221 20% 4%;
+    --accent-glass: 283 100% 72% / 0.1;
+    
+    /* Neutral System */
+    --muted: 221 16% 12%;
+    --muted-elevated: 221 14% 16%;
+    --muted-foreground: 221 14% 68%;
+    
+    /* Status Colors */
+    --destructive: 0 84% 68%;
+    --destructive-foreground: 221 20% 4%;
+    --destructive-glass: 0 84% 68% / 0.1;
+    
+    /* Borders & Inputs */
+    --border: 221 16% 16%;
+    --border-elevated: 221 14% 20%;
+    --input: 221 18% 6%;
+    --ring: 217 100% 68%;
+    
+    --radius: 0.5rem;
+    
+    /* Sentiment Analysis - Enhanced Colors */
+    --sentiment-positive: 142 84% 52%;
+    --sentiment-positive-bright: 142 84% 62%;
+    --sentiment-positive-glass: 142 84% 52% / 0.1;
+    --sentiment-positive-glow: 142 84% 52% / 0.2;
+    
+    --sentiment-negative: 0 84% 68%;
+    --sentiment-negative-bright: 0 84% 78%;
+    --sentiment-negative-glass: 0 84% 68% / 0.1;
+    --sentiment-negative-glow: 0 84% 68% / 0.2;
+    
+    --sentiment-neutral: 48 100% 68%;
+    --sentiment-neutral-bright: 48 100% 78%;
+    --sentiment-neutral-glass: 48 100% 68% / 0.1;
+    --sentiment-neutral-glow: 48 100% 68% / 0.2;
+    
+    /* Futuristic Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 100% 68%), hsl(283 100% 72%));
+    --gradient-primary-glow: linear-gradient(135deg, hsl(217 100% 68% / 0.8), hsl(283 100% 72% / 0.8));
+    --gradient-accent: linear-gradient(135deg, hsl(283 100% 72%), hsl(295 100% 78%));
+    --gradient-sentiment: linear-gradient(135deg, hsl(142 84% 52%), hsl(48 100% 68%), hsl(0 84% 68%));
+    
+    /* Glass Effects */
+    --gradient-glass: linear-gradient(135deg, hsl(221 18% 6% / 0.9), hsl(221 16% 8% / 0.8));
+    --gradient-card: linear-gradient(135deg, hsl(221 18% 6% / 0.8), hsl(221 16% 8% / 0.9));
+    --gradient-elevated: linear-gradient(135deg, hsl(221 16% 8% / 0.9), hsl(221 14% 12% / 0.8));
+    
+    /* Advanced Shadows */
+    --shadow-subtle: 0 1px 3px hsl(221 20% 4% / 0.3);
+    --shadow-medium: 0 4px 12px hsl(221 20% 4% / 0.4);
+    --shadow-large: 0 8px 32px hsl(221 20% 4% / 0.5);
+    --shadow-glow: 0 0 24px hsl(217 100% 68% / 0.3);
+    --shadow-accent-glow: 0 0 32px hsl(283 100% 72% / 0.25);
+    
+    /* Animations */
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Sidebar (for future use) */
+    --sidebar-background: 221 18% 6%;
+    --sidebar-foreground: 221 14% 98%;
+    --sidebar-primary: 217 100% 68%;
+    --sidebar-primary-foreground: 221 20% 4%;
+    --sidebar-accent: 221 16% 12%;
+    --sidebar-accent-foreground: 221 14% 98%;
+    --sidebar-border: 221 16% 16%;
+    --sidebar-ring: 217 100% 68%;
   }
 
   .light {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 264 83% 57%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 47%;
-
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 264 83% 57%;
-
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100% / 0.8), hsl(210 40% 98% / 0.9));
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Light Mode - Clean GitHub-inspired */
+    --background: 220 14% 98%;
+    --background-elevated: 220 14% 100%;
+    --background-glass: 220 14% 98% / 0.7;
+    
+    --foreground: 221 20% 12%;
+    --foreground-muted: 221 20% 28%;
+    
+    /* Card System */
+    --card: 220 14% 100%;
+    --card-elevated: 220 20% 99%;
+    --card-foreground: 221 20% 12%;
+    --card-glass: 220 14% 100% / 0.8;
+    
+    /* Interactive Elements */
+    --popover: 220 14% 100%;
+    --popover-foreground: 221 20% 12%;
+    
+    /* Brand Colors */
+    --primary: 217 100% 54%;
+    --primary-bright: 210 100% 62%;
+    --primary-foreground: 220 14% 98%;
+    --primary-glass: 217 100% 54% / 0.08;
+    
+    --secondary: 220 20% 94%;
+    --secondary-elevated: 220 20% 96%;
+    --secondary-foreground: 221 20% 12%;
+    
+    /* Accent System */
+    --accent: 283 100% 62%;
+    --accent-bright: 295 100% 68%;
+    --accent-foreground: 220 14% 98%;
+    --accent-glass: 283 100% 62% / 0.08;
+    
+    /* Neutral System */
+    --muted: 220 20% 94%;
+    --muted-elevated: 220 20% 96%;
+    --muted-foreground: 221 20% 48%;
+    
+    /* Status Colors */
+    --destructive: 0 84% 58%;
+    --destructive-foreground: 220 14% 98%;
+    --destructive-glass: 0 84% 58% / 0.08;
+    
+    /* Borders & Inputs */
+    --border: 220 20% 88%;
+    --border-elevated: 220 20% 84%;
+    --input: 220 20% 96%;
+    --ring: 217 100% 54%;
+    
+    /* Sentiment Colors - Light Mode */
+    --sentiment-positive: 142 84% 42%;
+    --sentiment-positive-bright: 142 84% 48%;
+    --sentiment-positive-glass: 142 84% 42% / 0.08;
+    --sentiment-positive-glow: 142 84% 42% / 0.15;
+    
+    --sentiment-negative: 0 84% 58%;
+    --sentiment-negative-bright: 0 84% 64%;
+    --sentiment-negative-glass: 0 84% 58% / 0.08;
+    --sentiment-negative-glow: 0 84% 58% / 0.15;
+    
+    --sentiment-neutral: 48 100% 52%;
+    --sentiment-neutral-bright: 48 100% 58%;
+    --sentiment-neutral-glass: 48 100% 52% / 0.08;
+    --sentiment-neutral-glow: 48 100% 52% / 0.15;
+    
+    /* Light Mode Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 100% 54%), hsl(283 100% 62%));
+    --gradient-primary-glow: linear-gradient(135deg, hsl(217 100% 54% / 0.1), hsl(283 100% 62% / 0.1));
+    --gradient-accent: linear-gradient(135deg, hsl(283 100% 62%), hsl(295 100% 68%));
+    --gradient-sentiment: linear-gradient(135deg, hsl(142 84% 42%), hsl(48 100% 52%), hsl(0 84% 58%));
+    
+    /* Glass Effects - Light */
+    --gradient-glass: linear-gradient(135deg, hsl(220 14% 100% / 0.9), hsl(220 20% 99% / 0.8));
+    --gradient-card: linear-gradient(135deg, hsl(220 14% 100% / 0.8), hsl(220 20% 99% / 0.9));
+    --gradient-elevated: linear-gradient(135deg, hsl(220 20% 99% / 0.9), hsl(220 20% 96% / 0.8));
+    
+    /* Light Mode Shadows */
+    --shadow-subtle: 0 1px 3px hsl(221 20% 12% / 0.1);
+    --shadow-medium: 0 4px 12px hsl(221 20% 12% / 0.15);
+    --shadow-large: 0 8px 32px hsl(221 20% 12% / 0.2);
+    --shadow-glow: 0 0 24px hsl(217 100% 54% / 0.2);
+    --shadow-accent-glow: 0 0 32px hsl(283 100% 62% / 0.15);
+    
+    /* Sidebar - Light Mode */
+    --sidebar-background: 220 14% 100%;
+    --sidebar-foreground: 221 20% 12%;
+    --sidebar-primary: 217 100% 54%;
+    --sidebar-primary-foreground: 220 14% 98%;
+    --sidebar-accent: 220 20% 94%;
+    --sidebar-accent-foreground: 221 20% 12%;
+    --sidebar-border: 220 20% 88%;
+    --sidebar-ring: 217 100% 54%;
   }
 }
 

@@ -2,8 +2,9 @@ import { useState } from "react";
 import { TextAnalysisInput } from "@/components/TextAnalysisInput";
 import { SentimentResults, type SentimentResult } from "@/components/SentimentResults";
 import { SentimentMeter } from "@/components/SentimentMeter";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { analyzeWithHuggingFace, analyzeWithVader, analyzeWithAWSComprehend } from "@/lib/sentiment";
-import { Brain, Cpu, Zap, BarChart3 } from "lucide-react";
+import { Brain, Cpu, Zap, BarChart3, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
@@ -99,35 +100,47 @@ const Index = () => {
   const aggregateSentiment = getAggregateSentiment();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-primary opacity-10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-accent opacity-10 rounded-full blur-3xl" />
+      </div>
+
       {/* Header */}
-      <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-gradient-primary">
-              <BarChart3 className="h-6 w-6 text-primary-foreground" />
+      <header className="sticky top-0 z-50 border-b border-border-elevated bg-card-glass backdrop-blur-glass">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-primary rounded-xl blur-md opacity-50" />
+                <div className="relative p-3 rounded-xl bg-gradient-primary shadow-glow">
+                  <BarChart3 className="h-6 w-6 text-primary-foreground" />
+                  <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-primary-foreground animate-pulse" />
+                </div>
+              </div>
+              <div>
+                <h1 className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                  Sentiment Pulse
+                </h1>
+                <p className="text-muted-foreground text-sm">
+                  AI-powered multi-source sentiment analysis
+                </p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                Sentiment Pulse
-              </h1>
-              <p className="text-muted-foreground">
-                Multi-source sentiment analysis dashboard
-              </p>
-            </div>
+            <ThemeToggle />
           </div>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Input Section */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 space-y-6">
             <TextAnalysisInput 
               onAnalyze={handleAnalyze} 
               isAnalyzing={isAnalyzing}
-              className="mb-6"
             />
             
             {/* Results */}
@@ -143,20 +156,38 @@ const Index = () => {
             />
             
             {/* Info Card */}
-            <div className="bg-gradient-card shadow-card-custom border border-border/50 rounded-lg p-6">
-              <h3 className="font-semibold mb-3 text-foreground">Analysis Methods</h3>
-              <div className="space-y-3 text-sm">
-                <div className="flex items-center gap-2">
-                  <Brain className="h-4 w-4 text-primary" />
-                  <span className="text-muted-foreground">Hugging Face - AI transformer model</span>
+            <div className="bg-gradient-glass border border-border-elevated rounded-xl p-6 shadow-medium backdrop-blur-glass">
+              <h3 className="font-semibold mb-4 text-foreground flex items-center gap-2">
+                <Brain className="h-5 w-5 text-primary" />
+                Analysis Methods
+              </h3>
+              <div className="space-y-4 text-sm">
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-muted-elevated/30 border border-border">
+                  <div className="p-2 rounded-lg bg-primary-glass">
+                    <Brain className="h-4 w-4 text-primary" />
+                  </div>
+                  <div>
+                    <div className="font-medium text-foreground">Hugging Face</div>
+                    <div className="text-muted-foreground text-xs">AI transformer model</div>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Zap className="h-4 w-4 text-sentiment-neutral" />
-                  <span className="text-muted-foreground">VADER - Rule-based analysis</span>
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-muted-elevated/30 border border-border">
+                  <div className="p-2 rounded-lg bg-sentiment-neutral-glass">
+                    <Zap className="h-4 w-4 text-sentiment-neutral" />
+                  </div>
+                  <div>
+                    <div className="font-medium text-foreground">VADER</div>
+                    <div className="text-muted-foreground text-xs">Rule-based analysis</div>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Cpu className="h-4 w-4 text-sentiment-positive" />
-                  <span className="text-muted-foreground">AWS Comprehend - Cloud service</span>
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-muted-elevated/30 border border-border">
+                  <div className="p-2 rounded-lg bg-sentiment-positive-glass">
+                    <Cpu className="h-4 w-4 text-sentiment-positive" />
+                  </div>
+                  <div>
+                    <div className="font-medium text-foreground">AWS Comprehend</div>
+                    <div className="text-muted-foreground text-xs">Cloud service</div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import { Progress } from "@/components/ui/progress";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { TrendingUp, BarChart3, Activity } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface SentimentMeterProps {
@@ -24,61 +25,90 @@ export const SentimentMeter = ({ positive, neutral, negative, className }: Senti
   const dominant = getDominantSentiment();
 
   return (
-    <Card className={cn("bg-gradient-card shadow-card-custom border-border/50", className)}>
+    <Card className={cn("bg-gradient-glass border-border-elevated shadow-large backdrop-blur-glass", className)}>
       <CardHeader className="pb-4">
-        <CardTitle className="text-lg font-semibold bg-gradient-primary bg-clip-text text-transparent">
+        <CardTitle className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent flex items-center gap-2">
+          <BarChart3 className="h-5 w-5 text-primary" />
           Sentiment Distribution
         </CardTitle>
+        <p className="text-muted-foreground text-sm">Real-time analysis breakdown</p>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-sentiment-positive">Positive</span>
-            <span className="text-sm font-bold text-sentiment-positive">{posPercentage.toFixed(1)}%</span>
+      <CardContent className="space-y-6">
+        <div className="space-y-4">
+          {/* Positive */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-sentiment-positive shadow-sm" />
+                <span className="text-sm font-medium text-sentiment-positive">Positive</span>
+              </div>
+              <span className="text-lg font-bold text-sentiment-positive">{posPercentage.toFixed(1)}%</span>
+            </div>
+            <div className="relative">
+              <div className="h-3 bg-sentiment-positive-glass rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-sentiment-positive to-sentiment-positive-bright transition-all duration-700 ease-out shadow-sm"
+                  style={{ width: `${posPercentage}%` }}
+                />
+              </div>
+            </div>
           </div>
-          <Progress 
-            value={posPercentage} 
-            className="h-2 bg-sentiment-positive-bg"
-            style={{
-              background: 'hsl(var(--sentiment-positive-bg))'
-            }}
-          />
           
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-sentiment-neutral">Neutral</span>
-            <span className="text-sm font-bold text-sentiment-neutral">{neuPercentage.toFixed(1)}%</span>
+          {/* Neutral */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-sentiment-neutral shadow-sm" />
+                <span className="text-sm font-medium text-sentiment-neutral">Neutral</span>
+              </div>
+              <span className="text-lg font-bold text-sentiment-neutral">{neuPercentage.toFixed(1)}%</span>
+            </div>
+            <div className="relative">
+              <div className="h-3 bg-sentiment-neutral-glass rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-sentiment-neutral to-sentiment-neutral-bright transition-all duration-700 ease-out shadow-sm"
+                  style={{ width: `${neuPercentage}%` }}
+                />
+              </div>
+            </div>
           </div>
-          <Progress 
-            value={neuPercentage} 
-            className="h-2 bg-sentiment-neutral-bg"
-            style={{
-              background: 'hsl(var(--sentiment-neutral-bg))'
-            }}
-          />
           
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-sentiment-negative">Negative</span>
-            <span className="text-sm font-bold text-sentiment-negative">{negPercentage.toFixed(1)}%</span>
+          {/* Negative */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-sentiment-negative shadow-sm" />
+                <span className="text-sm font-medium text-sentiment-negative">Negative</span>
+              </div>
+              <span className="text-lg font-bold text-sentiment-negative">{negPercentage.toFixed(1)}%</span>
+            </div>
+            <div className="relative">
+              <div className="h-3 bg-sentiment-negative-glass rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-sentiment-negative to-sentiment-negative-bright transition-all duration-700 ease-out shadow-sm"
+                  style={{ width: `${negPercentage}%` }}
+                />
+              </div>
+            </div>
           </div>
-          <Progress 
-            value={negPercentage} 
-            className="h-2 bg-sentiment-negative-bg"
-            style={{
-              background: 'hsl(var(--sentiment-negative-bg))'
-            }}
-          />
         </div>
 
-        <div className="pt-4 border-t border-border/50">
+        <div className="pt-4 border-t border-border-elevated">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-muted-foreground">Overall Sentiment</span>
+            <div className="flex items-center gap-2">
+              <Activity className="h-4 w-4 text-muted-foreground" />
+              <span className="text-sm font-medium text-muted-foreground">Overall Sentiment</span>
+            </div>
             <div className={cn(
-              "px-3 py-1 rounded-full text-xs font-semibold",
-              dominant === 'positive' && "bg-sentiment-positive-bg text-sentiment-positive",
-              dominant === 'neutral' && "bg-sentiment-neutral-bg text-sentiment-neutral",
-              dominant === 'negative' && "bg-sentiment-negative-bg text-sentiment-negative"
+              "px-4 py-2 rounded-xl text-sm font-semibold border backdrop-blur-sm transition-all duration-300",
+              dominant === 'positive' && "bg-sentiment-positive-glass text-sentiment-positive border-sentiment-positive/20 shadow-sm",
+              dominant === 'neutral' && "bg-sentiment-neutral-glass text-sentiment-neutral border-sentiment-neutral/20 shadow-sm",
+              dominant === 'negative' && "bg-sentiment-negative-glass text-sentiment-negative border-sentiment-negative/20 shadow-sm"
             )}>
-              {dominant.charAt(0).toUpperCase() + dominant.slice(1)}
+              <div className="flex items-center gap-2">
+                <TrendingUp className="h-3 w-3" />
+                {dominant.charAt(0).toUpperCase() + dominant.slice(1)}
+              </div>
             </div>
           </div>
         </div>

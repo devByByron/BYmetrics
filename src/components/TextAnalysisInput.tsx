@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, Brain, Zap } from "lucide-react";
+import { Loader2, Brain, Zap, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface TextAnalysisInputProps {
@@ -27,24 +27,31 @@ export const TextAnalysisInput = ({ onAnalyze, isAnalyzing, className }: TextAna
   ];
 
   return (
-    <Card className={cn("bg-gradient-card shadow-card-custom border-border/50", className)}>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-          <Brain className="h-6 w-6 text-primary" />
+    <Card className={cn("bg-gradient-glass border-border-elevated shadow-large backdrop-blur-glass", className)}>
+      <CardHeader className="pb-4">
+        <CardTitle className="flex items-center gap-3 text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          <div className="relative">
+            <Brain className="h-7 w-7 text-primary" />
+            <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-accent animate-pulse" />
+          </div>
           Sentiment Analysis
         </CardTitle>
+        <p className="text-muted-foreground text-sm">
+          Analyze text sentiment using multiple AI models for comprehensive insights
+        </p>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="space-y-2">
-          <label htmlFor="analysis-text" className="text-sm font-medium text-foreground">
+      <CardContent className="space-y-6">
+        <div className="space-y-3">
+          <label htmlFor="analysis-text" className="text-sm font-medium text-foreground flex items-center gap-2">
+            <Zap className="h-4 w-4 text-accent" />
             Enter text to analyze
           </label>
           <Textarea
             id="analysis-text"
-            placeholder="Type or paste your text here..."
+            placeholder="Type or paste your text here to get started with sentiment analysis..."
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="min-h-[120px] bg-input/50 border-border/50 focus:border-primary/50 resize-none"
+            className="min-h-[140px] bg-input border-border-elevated focus:border-primary focus:ring-1 focus:ring-primary/20 resize-none transition-smooth text-foreground placeholder:text-muted-foreground"
             disabled={isAnalyzing}
           />
         </div>
@@ -52,33 +59,40 @@ export const TextAnalysisInput = ({ onAnalyze, isAnalyzing, className }: TextAna
         <Button 
           onClick={handleAnalyze}
           disabled={!text.trim() || isAnalyzing}
-          className="w-full bg-gradient-primary hover:opacity-90 transition-opacity"
+          className="w-full h-12 bg-gradient-primary hover:shadow-glow transition-all duration-300 text-base font-semibold relative overflow-hidden group"
           size="lg"
         >
+          <div className="absolute inset-0 bg-gradient-primary-glow opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           {isAnalyzing ? (
             <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              <Loader2 className="mr-2 h-5 w-5 animate-spin" />
               Analyzing...
             </>
           ) : (
             <>
-              <Zap className="mr-2 h-4 w-4" />
+              <Zap className="mr-2 h-5 w-5" />
               Analyze Sentiment
             </>
           )}
         </Button>
 
-        <div className="pt-4 border-t border-border/50">
-          <p className="text-sm font-medium text-muted-foreground mb-3">Try these sample texts:</p>
-          <div className="space-y-2">
+        <div className="pt-4 border-t border-border-elevated">
+          <p className="text-sm font-medium text-muted-foreground mb-4 flex items-center gap-2">
+            <Sparkles className="h-4 w-4 text-accent" />
+            Try these sample texts:
+          </p>
+          <div className="grid gap-3">
             {sampleTexts.map((sample, index) => (
               <button
                 key={index}
                 onClick={() => setText(sample)}
                 disabled={isAnalyzing}
-                className="w-full text-left p-3 text-sm bg-muted/30 hover:bg-muted/50 rounded-lg border border-border/30 transition-colors disabled:opacity-50"
+                className="w-full text-left p-4 text-sm bg-muted-elevated/50 hover:bg-muted-elevated border border-border hover:border-border-elevated rounded-xl transition-all duration-200 disabled:opacity-50 hover:shadow-medium group"
               >
-                {sample}
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2 opacity-50 group-hover:opacity-100 transition-opacity" />
+                  <span className="text-foreground-muted group-hover:text-foreground transition-colors">{sample}</span>
+                </div>
               </button>
             ))}
           </div>

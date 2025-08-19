@@ -20,49 +20,82 @@ export default {
 		extend: {
 			colors: {
 				border: 'hsl(var(--border))',
+				'border-elevated': 'hsl(var(--border-elevated))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
-				background: 'hsl(var(--background))',
-				foreground: 'hsl(var(--foreground))',
+				
+				background: {
+					DEFAULT: 'hsl(var(--background))',
+					elevated: 'hsl(var(--background-elevated))',
+					glass: 'hsl(var(--background-glass))'
+				},
+				foreground: {
+					DEFAULT: 'hsl(var(--foreground))',
+					muted: 'hsl(var(--foreground-muted))'
+				},
+				
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					bright: 'hsl(var(--primary-bright))',
+					foreground: 'hsl(var(--primary-foreground))',
+					glass: 'hsl(var(--primary-glass))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
+					elevated: 'hsl(var(--secondary-elevated))',
 					foreground: 'hsl(var(--secondary-foreground))'
-				},
-				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))'
-				},
-				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
 				},
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+					bright: 'hsl(var(--accent-bright))',
+					foreground: 'hsl(var(--accent-foreground))',
+					glass: 'hsl(var(--accent-glass))'
 				},
+				
+				destructive: {
+					DEFAULT: 'hsl(var(--destructive))',
+					foreground: 'hsl(var(--destructive-foreground))',
+					glass: 'hsl(var(--destructive-glass))'
+				},
+				
+				muted: {
+					DEFAULT: 'hsl(var(--muted))',
+					elevated: 'hsl(var(--muted-elevated))',
+					foreground: 'hsl(var(--muted-foreground))'
+				},
+				
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
 					foreground: 'hsl(var(--popover-foreground))'
 				},
 				card: {
 					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
+					elevated: 'hsl(var(--card-elevated))',
+					foreground: 'hsl(var(--card-foreground))',
+					glass: 'hsl(var(--card-glass))'
 				},
+				
 				sentiment: {
-					positive: 'hsl(var(--sentiment-positive))',
-					'positive-light': 'hsl(var(--sentiment-positive-light))',
-					'positive-bg': 'hsl(var(--sentiment-positive-bg))',
-					negative: 'hsl(var(--sentiment-negative))',
-					'negative-light': 'hsl(var(--sentiment-negative-light))',
-					'negative-bg': 'hsl(var(--sentiment-negative-bg))',
-					neutral: 'hsl(var(--sentiment-neutral))',
-					'neutral-light': 'hsl(var(--sentiment-neutral-light))',
-					'neutral-bg': 'hsl(var(--sentiment-neutral-bg))'
+					positive: {
+						DEFAULT: 'hsl(var(--sentiment-positive))',
+						bright: 'hsl(var(--sentiment-positive-bright))',
+						glass: 'hsl(var(--sentiment-positive-glass))',
+						glow: 'hsl(var(--sentiment-positive-glow))'
+					},
+					negative: {
+						DEFAULT: 'hsl(var(--sentiment-negative))',
+						bright: 'hsl(var(--sentiment-negative-bright))',
+						glass: 'hsl(var(--sentiment-negative-glass))',
+						glow: 'hsl(var(--sentiment-negative-glow))'
+					},
+					neutral: {
+						DEFAULT: 'hsl(var(--sentiment-neutral))',
+						bright: 'hsl(var(--sentiment-neutral-bright))',
+						glass: 'hsl(var(--sentiment-neutral-glass))',
+						glow: 'hsl(var(--sentiment-neutral-glow))'
+					}
 				},
+				
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -74,22 +107,39 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-primary-glow': 'var(--gradient-primary-glow)',
+				'gradient-accent': 'var(--gradient-accent)',
 				'gradient-sentiment': 'var(--gradient-sentiment)',
-				'gradient-card': 'var(--gradient-card)'
+				'gradient-card': 'var(--gradient-card)',
+				'gradient-glass': 'var(--gradient-glass)',
+				'gradient-elevated': 'var(--gradient-elevated)'
 			},
+			
 			boxShadow: {
-				'sentiment': 'var(--shadow-sentiment)',
-				'card-custom': 'var(--shadow-card)'
+				'subtle': 'var(--shadow-subtle)',
+				'medium': 'var(--shadow-medium)',
+				'large': 'var(--shadow-large)',
+				'glow': 'var(--shadow-glow)',
+				'accent-glow': 'var(--shadow-accent-glow)'
 			},
+			
 			transitionTimingFunction: {
-				'smooth': 'var(--transition-smooth)'
+				'fast': 'var(--transition-fast)',
+				'smooth': 'var(--transition-smooth)',
+				'slow': 'var(--transition-slow)'
+			},
+			
+			backdropBlur: {
+				'glass': '16px'
 			},
 			keyframes: {
 				'accordion-down': {
