@@ -121,7 +121,7 @@ const Index = () => {
               </div>
               <div>
                 <h1 className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                  Sentiment Pulse
+                  BYmetrics
                 </h1>
                 <p className="text-muted-foreground text-sm">
                   AI-powered multi-source sentiment analysis
